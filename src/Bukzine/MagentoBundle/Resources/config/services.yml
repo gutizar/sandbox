@@ -1,0 +1,31 @@
+parameters:
+#    bukzine_magento.example.class: Bukzine\MagentoBundle\Example
+    magento.api.endpoint: 'http://shop.sandbox.local/api/soap/?wsdl'
+    magento.api.user.class: Bukzine\MagentoBundle\Api\UserApi
+
+services:
+#    bukzine_magento.example:
+#        class: %bukzine_magento.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    login_listener:
+        class: Bukzine\MagentoBundle\Listener\LoginListener
+        arguments: [@security.context, @router]
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login }
+            - { name: kernel.event_listener, event: kernel.response }
+
+    magento_api_user:
+        class: %magento.api.user.class%
+        arguments: [ %magento.api.endpoint% ]
+
+    customer_listener: 
+        class: Bukzine\MagentoBundle\Listener\CustomerListener
+        arguments: [@monolog.logger]
+        tags:
+            - { name: kernel.event_listener, event: mage.customer_save_after, method: synchronize }
+
+    bukzine_magento.twig.extension.debug:
+        class:        Twig_Extension_Debug
+        tags:
+             - { name: 'twig.extension' }

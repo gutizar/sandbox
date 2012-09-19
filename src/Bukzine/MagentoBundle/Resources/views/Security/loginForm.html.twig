@@ -1,0 +1,28 @@
+{# empty Twig template #}
+{% set user = app.user %}
+
+<ul class="nav pull-right">
+    <li><a href="#">Sign Up</a></li>
+    <li class="divider-vertical"></li>
+    <li class="dropdown">
+        {% if is_granted('ROLE_MAGENTO_5') %}
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">{{ user.firstname }} <b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a tabindex="-1" href="#">My profile</a></li>
+                <li><a tabindex="-1" href="{{ path('magento_logout') }}">Logout</a></li>
+            </ul>
+        {% else %}
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+            <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                <form action="{{ path('magento_login_check') }}" method="post">
+                    {% if error %}
+                        <div>{{ error.message }}</div>
+                    {% endif %}
+                    <input id="login_user" type="text" name="_username" placeholder="Username" style="margin-bottom: 15px;" size="30" />
+                    <input id="login_pass" type="password" name="_password" placeholder="Password" style="margin-bottom: 15px;" size="30" />
+                    <input type="submit" value="Login" class="btn" class="pull-right" />
+                </form>
+            </div>
+        {% endif %}
+    </li>
+</ul>

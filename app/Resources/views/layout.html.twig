@@ -1,0 +1,72 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+	{% stylesheets filter='cssrewrite,?yui_css' 
+   		'@MopaBootstrapBundle/Resources/bootstrap/css/bootstrap.css'
+   		'@BukzineMagentoBundle/Resources/public/css/*'
+	%}
+		<link href="{{ asset_url }}" type="text/css" rel="stylesheet" media="screen" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block body %}
+	{% block navbar %}
+		<div class="navbar navbar-fixed-top">
+	      	<div class="navbar-inner">
+		        <div class="container">
+		          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </a>
+		          <a class="brand" href="#">Bukzine Sandbox</a>
+		          <div class="nav-collapse">
+		            <ul class="nav">
+		              <li class="active"><a href="#">Home</a></li>
+		              <li><a href="#about">About</a></li>
+		              <li><a href="#contact">Contact</a></li>
+		            </ul>
+		            {% render 'BukzineMagentoBundle:Security:loginForm' %}
+		          </div><!--/.nav-collapse -->
+		        </div>
+	      	</div>
+    	</div>
+	{% endblock %}
+	<div id="wrap">
+		<div id = "main" class="container">
+			<div class="hero-unit">
+				{% block header %}{% endblock %}
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span2">
+						{% block sidebar %}{% endblock %}
+					</div>
+					<div class="span10">
+						{% block article %}{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer class="footer">
+		<div class="container">
+			{% block footer %}
+				<p>&copy; Bukzine d.o.o. 2012</p>
+			{% endblock %}
+		</div>
+	</footer>
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	{% javascripts
+		'@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
+		'@BukzineMagentoBundle/Resources/public/js/*'
+		output='js/foot_compiled.js'
+		%}
+		<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+{% endblock %}

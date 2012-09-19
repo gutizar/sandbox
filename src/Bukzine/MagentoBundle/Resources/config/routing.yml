@@ -1,0 +1,21 @@
+BukzineMagentoBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BukzineMagentoBundle:Default:index }
+
+magento_home:
+    pattern: /
+    defaults: { _controller: BukzineMagentoBundle:Default:home }
+
+magento_login:
+    pattern: /login
+    defaults: { _controller: BukzineMagentoBundle:Security:login }
+
+magento_login_check:
+    pattern: /login_check
+
+magento_logout:
+    pattern: /logout
+
+magento_new_task:
+    pattern: /new
+    defaults: { _controller: BukzineMagentoBundle:Demo:collection }

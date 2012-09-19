@@ -1,0 +1,24 @@
+{% extends '::layout.html.twig' %}
+{% from 'MopaBootstrapBundle::flash.html.twig' import flash %}
+
+{% block header %}
+	<h3>Please provide your username and password</h3>
+{% endblock %}
+
+{% block article %}
+	<legend>Author login</legend>
+	<form action="{{ path('magento_login_check') }}" method="post">
+
+		{% if error %}
+        	{{ flash('error', error.message, '', true) }}
+    	{% endif %}
+
+		<label for="username">Username:</label>
+        <input type="text" id="username" name="_username" />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+
+		<div><input class="btn" type="submit" name="login" value="Login" /></div>
+	</form>
+{% endblock %}

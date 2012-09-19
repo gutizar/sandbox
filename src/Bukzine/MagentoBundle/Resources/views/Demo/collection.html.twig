@@ -1,0 +1,37 @@
+{% extends '::layout.html.twig' %}
+
+{% block header %}
+	<h2>Demo</h2>
+	<h3>Testing collection fields in forms</h3>
+{% endblock %}
+
+{% block article %}
+    <div class="span10">
+      <legend>Tasks (with collection of tags)</legend>
+      <form action="{{ path('magento_new_task') }}" method="POST" {{ form_enctype(form) }}>
+        {# render the task's only field: description #}
+        {{ form_row(form.description) }}
+
+        <h3>Tags</h3>
+        <div class="tags" data-prototype="{{ form_widget(form.tags.vars.prototype)|e }}">
+            {# iterate over each existing tag and render its only field: name #}
+            {% for tag in form.tags %}
+                <div class="tag">{{ form_row(tag.name) }}</div>
+            {% endfor %}
+        </div>
+
+        {{ form_rest(form) }}
+        <br />
+        <div><input class="btn" type="submit" name="create" value="Create" /></div>
+      </form>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+	<ul class="nav nav-list">
+	  <li class="nav-header">List header</li>
+	  <li class="active"><a href="#">Home</a></li>
+	  <li><a href="http://shop.sandbox.local/index.php/customer/account/">Edit profile</a></li>
+	  <li><a href="{{ path('magento_logout') }}">Logout</a></li>
+	</ul>
+{% endblock %}
