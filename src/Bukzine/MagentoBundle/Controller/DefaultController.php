@@ -15,12 +15,6 @@ class DefaultController extends Controller
 
     public function homeAction()
     {
-    	$userApi = $this->get('magento_api_user');
-
-    	$details = $userApi->getUser('2');
-
-        return $this->render('BukzineMagentoBundle:Default:home.html.twig', array(
-        	'details' => $details,
-        ));
+        return $this->render('BukzineMagentoBundle:Default:home.html.twig');
     }
 }

@@ -1,0 +1,39 @@
+{% extends '::layout.html.twig' %}
+{% from 'MopaBootstrapBundle::flash.html.twig' import flash %}
+
+{% block header %}
+	<h3>Create an account with Bukzine</h3>
+{% endblock %}
+
+{% block article %}
+	<form action="{{ path('magento_register') }}" method="post" {{ form_enctype(form) }}>
+        <div>
+	        {{ form_errors(form) }}
+
+	        {% if error %}
+	        	{{ flash('error', error, '', true) }}
+	    	{% endif %}
+        <div>
+            {{ form_row(form.firstname) }}
+        </div>
+
+        <div>
+            {{ form_row(form.lastname) }}
+        </div>
+
+        <div>
+            {{ form_row(form.email) }}
+        </div>
+
+        <div>
+        	<p class="ayuda">Please, write down your password twice.</p>
+            {{ form_row(form.password) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <input class="btn" type="submit" value="Register" />
+
+        </div>
+    </form>
+{% endblock %}

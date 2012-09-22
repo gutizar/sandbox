@@ -16,6 +16,10 @@ magento_login_check:
 magento_logout:
     pattern: /logout
 
+magento_register:
+    pattern: /register
+    defaults: { _controller: BukzineMagentoBundle:Security:register }
+
 magento_new_task:
     pattern: /new
     defaults: { _controller: BukzineMagentoBundle:Demo:collection }

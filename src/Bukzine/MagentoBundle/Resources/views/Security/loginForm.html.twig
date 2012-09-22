@@ -2,7 +2,7 @@
 {% set user = app.user %}
 
 <ul class="nav pull-right">
-    <li><a href="#">Sign Up</a></li>
+    <li><a href="{{ path('magento_register') }}">Sign Up</a></li>
     <li class="divider-vertical"></li>
     <li class="dropdown">
         {% if is_granted('ROLE_MAGENTO_5') %}
