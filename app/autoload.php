@@ -16,10 +16,14 @@ $loader->registerNamespaces(array(
     'Metadata'         => __DIR__.'/../vendor/metadata/src',
     'Liip'             => __DIR__.'/../vendor/bundles',
     'Mopa'             => __DIR__.'/../vendor/bundles',
+    'Knp\\Component'   => __DIR__.'/../vendor/knp-components/src',
+    'Knp\\Bundle'      => __DIR__.'/../vendor/bundles',
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
     'Twig_'            => __DIR__.'/../vendor/twig/lib',
+    'Fpdi_'            => __DIR__.'/../vendor/fpdi/lib',
+    'Tcpdf_'           => __DIR__.'/../vendor/tcpdf',
 ));
 
 // intl

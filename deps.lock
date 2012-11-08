@@ -6,10 +6,15 @@ doctrine-dbal 2.1.7
 doctrine 2.1.7
 swiftmailer v4.2.1
 assetic v1.0.3
-twig-extensions feb6d3f10c411e2631997c0a905aa581c80305c1
-metadata 1.0.0
+twig-extensions dcdff02fbac1282e6b8f4d0558cc7e9580105688
+metadata 1.1.0
 SensioFrameworkExtraBundle v2.0.17
 JMSSecurityExtraBundle e752f888c51425f71382c056961f10f2be642102
 SensioDistributionBundle v2.0.17
 SensioGeneratorBundle v2.0.17
 AsseticBundle 6f15728c1aefa5246caa83730e3dbf70b0d46052
+LiipMagentoBundle 8cf6ad3bfbc1b00ea0dbbceb33b746e7d8051164
+MopaBootstrapBundle 66dee7364fcd8a39059713480b67205d49190008
+knp-components 99ea408dc2a7c3616e688ffe67e3248ece69ff0e
+KnpPaginatorBundle de439d2816fe984dbe0c438fd4d0d7c67748c5ff
+JMSSerializerBundle 0.9.0

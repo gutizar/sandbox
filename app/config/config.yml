@@ -77,3 +77,42 @@ liip_magento:
 mopa_bootstrap:
     form:
         error_type: block
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: KnpPaginatorBundle:Pagination:sliding.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+jms_serializer:
+    handlers:
+        object_based: false
+        datetime:
+            format: "Y-m-dTH:i:s" # ISO8601
+            default_timezone: "UTC" # defaults to whatever timezone set in php.ini or via date_default_timezone_set
+        array_collection: true
+        form_error: true
+        constraint_violation: true
+
+    property_naming:
+        separator:  _
+        lower_case: true
+
+    metadata:
+        cache: file
+        debug: "%kernel.debug%"
+        file_cache:
+            dir: "%kernel.cache_dir%/serializer"
+
+        # Using auto-detection, the mapping files for each bundle will be
+        # expected in the Resources/config/serializer directory.
+        #
+        # Example:
+        # class: My\FooBundle\Entity\User
+        # expected path: @MyFooBundle/Resources/config/serializer/Entity.User.(yml|xml|php)
+        auto_detection: true

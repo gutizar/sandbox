@@ -2,6 +2,7 @@ parameters:
 #    bukzine_magento.example.class: Bukzine\MagentoBundle\Example
     magento.api.endpoint: 'http://shop.sandbox.local/api/soap/?wsdl'
     magento.api.user.class: Bukzine\MagentoBundle\Api\UserApi
+    magento.api.product.class: Bukzine\MagentoBundle\Api\ProductApi
 
 services:
 #    bukzine_magento.example:
@@ -17,6 +18,10 @@ services:
 
     magento_api_user:
         class: %magento.api.user.class%
+        arguments: [ %magento.api.endpoint% ]
+
+    magento.api.product:
+        class: %magento.api.product.class%
         arguments: [ %magento.api.endpoint% ]
 
     customer_listener: 

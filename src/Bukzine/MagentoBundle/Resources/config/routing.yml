@@ -20,6 +20,37 @@ magento_register:
     pattern: /register
     defaults: { _controller: BukzineMagentoBundle:Security:register }
 
+magento_profile:
+    pattern: /profile
+    defaults: { _controller: BukzineMagentoBundle:Security:profile }
+
 magento_new_task:
     pattern: /new
     defaults: { _controller: BukzineMagentoBundle:Demo:collection }
+
+magento_upload_book:
+    pattern: /upload
+    defaults: { _controller: BukzineMagentoBundle:Default:upload }
+
+magento_publish_book:
+    pattern: /publish/{id}
+    defaults: { _controller: BukzineMagentoBundle:Default:publish }
+
+magento_list_books:
+    pattern: /list
+    defaults: { _controller: BukzineMagentoBundle:Default:listBooks }
+
+magento_download_book:
+    pattern: /download/{id}
+    defaults: { _controller: BukzineMagentoBundle:Default:download }
+
+magento_handle_upload:
+    pattern: /handle
+    defaults: { _controller: BukzineMagentoBundle:Default:handleUpload }
+
+# Testing route: remove for production
+magento_update_document:
+    pattern: /update/{id}
+    defaults: { _controller: BukzineMagentoBundle:Default:update }
+    requirements:
+        id:  \d+

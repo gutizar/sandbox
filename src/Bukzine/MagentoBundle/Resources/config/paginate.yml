@@ -1,0 +1,6 @@
+services:
+    magento.collection.subscriber:
+        class: Bukzine\MagentoBundle\Subscriber\MagentoCollectionSubscriber
+        scope: request
+        tags:
+            - { name: knp_paginator.subscriber }

@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Liip\MagentoBundle\LiipMagentoBundle(),
             new Bukzine\MagentoBundle\BukzineMagentoBundle(),
             new Mopa\Bundle\BootstrapBundle\MopaBootstrapBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

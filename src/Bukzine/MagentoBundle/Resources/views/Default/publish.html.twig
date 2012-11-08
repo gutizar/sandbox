@@ -1,0 +1,41 @@
+{% extends '::layout.html.twig' %}
+{% from 'MopaBootstrapBundle::flash.html.twig' import flash %}
+
+{% set user = app.user %}
+
+{% block header %}
+	<h2>Dashboard</h2>
+	<h3>Welcome to your author dashboard!</h3>
+{% endblock %}
+
+{% block article %}
+  <h2>Publish your book with us!</h2>
+  <form action="{{ path('magento_publish_book', {'id': documentId}) }}" method="post" {{ form_enctype(form) }}>
+    <div>
+      {{ form_errors(form) }}
+
+      {% if error %}
+          {{ flash('error', error, '', true) }}
+      {% endif %}
+
+      <div>
+        {{ form_label(form.name, 'Title') }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+      </div>
+
+        {{ form_rest(form) }}
+      <input class="btn" type="submit" value="Publish!" />
+    </div>
+  </form>
+{% endblock %}
+
+{% block sidebar %}
+	<ul class="nav nav-list">
+	  <li class="nav-header">List header</li>
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="{{ path('magento_profile') }}">Edit profile</a></li>
+    <li><a href="{{ path('magento_list_books') }}">My published books</a></li>
+    <li><a href="{{ path('magento_logout') }}">Logout</a></li>
+	</ul>
+{% endblock %}

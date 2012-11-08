@@ -1,4 +1,13 @@
 #################
+## Symfony 2
+#################
+
+app/cache/
+.magentointel-cache/
+vendor/
+web/uploads/
+
+#################
 ## Eclipse
 #################
 
@@ -7,7 +16,6 @@
 .metadata
 bin/
 tmp/
-app/cache/
 
 *.tmp
 *.bak

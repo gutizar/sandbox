@@ -1,0 +1,49 @@
+{% extends '::layout.html.twig' %}
+{% from 'MopaBootstrapBundle::flash.html.twig' import flash %}
+
+{% block header %}
+	<h3>Edit your profile</h3>
+{% endblock %}
+
+{% block article %}
+	<form action="{{ path('magento_profile') }}" method="post" {{ form_enctype(form) }}>
+        <div>
+	        {{ form_errors(form) }}
+
+            {% if error %}
+                {{ flash('error', error, '', true) }}
+            {% endif %}
+        <div>
+            {{ form_label(form.firstname, 'First name') }}
+    		{{ form_errors(form.firstname) }}
+    		{{ form_widget(form.firstname) }}
+        </div>
+
+        <div>
+            {{ form_label(form.lastname, 'Last name') }}
+    		{{ form_errors(form.lastname) }}
+    		{{ form_widget(form.lastname) }}
+        </div>
+
+        <div>
+            {{ form_row(form.email) }}
+        </div>
+
+        <div>
+        	<p class="help">Please, write down your password twice.</p>
+            {{ form_row(form.password) }}
+        </div>
+
+        <div>
+        	{{ form_label(form.twitterAccount, 'Twitter account') }}
+    		{{ form_errors(form.twitterAccount) }}
+    		{{ form_widget(form.twitterAccount) }}
+        </div>
+
+        {{ form_rest(form) }}
+
+        <input class="btn" type="submit" value="Edit" />
+
+        </div>
+    </form>
+{% endblock %}

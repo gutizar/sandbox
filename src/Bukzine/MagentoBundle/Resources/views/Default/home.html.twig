@@ -29,8 +29,9 @@
 {% block sidebar %}
 	<ul class="nav nav-list">
 	  <li class="nav-header">List header</li>
-	  <li class="active"><a href="#">Home</a></li>
-	  <li><a href="http://shop.sandbox.local/index.php/customer/account/">Edit profile</a></li>
-	  <li><a href="{{ path('magento_logout') }}">Logout</a></li>
+    <li class="active"><a href="#">Home</a></li>
+    <li><a href="{{ path('magento_profile') }}">Edit profile</a></li>
+    <li><a href="{{ path('magento_list_books') }}">My published books</a></li>
+    <li><a href="{{ path('magento_logout') }}">Logout</a></li>
 	</ul>
 {% endblock %}

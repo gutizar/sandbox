@@ -14,11 +14,15 @@
 	        	{{ flash('error', error, '', true) }}
 	    	{% endif %}
         <div>
-            {{ form_row(form.firstname) }}
+            {{ form_label(form.firstname, 'First name') }}
+    		{{ form_errors(form.firstname) }}
+    		{{ form_widget(form.firstname) }}
         </div>
 
         <div>
-            {{ form_row(form.lastname) }}
+            {{ form_label(form.lastname, 'Last name') }}
+    		{{ form_errors(form.lastname) }}
+    		{{ form_widget(form.lastname) }}
         </div>
 
         <div>
@@ -26,8 +30,14 @@
         </div>
 
         <div>
-        	<p class="ayuda">Please, write down your password twice.</p>
+        	<p class="help">Please, write down your password twice.</p>
             {{ form_row(form.password) }}
+        </div>
+
+        <div>
+        	{{ form_label(form.twitterAccount, 'Twitter account') }}
+    		{{ form_errors(form.twitterAccount) }}
+    		{{ form_widget(form.twitterAccount) }}
         </div>
 
         {{ form_rest(form) }}

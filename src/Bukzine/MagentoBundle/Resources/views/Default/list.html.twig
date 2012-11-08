@@ -1,0 +1,50 @@
+{% extends '::layout.html.twig' %}
+{% set user = app.user %}
+
+{% block header %}
+	<h2>Dashboard</h2>
+	<h3>Welcome to your author dashboard!</h3>
+{% endblock %}
+
+{% block article %}
+    <div class="span10">
+      <h2>Your books!</h2>
+      {% if books is defined %}
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              {# sorting of properties based on query components: a - Entity\Article #}
+              <th>{{ books.sortable('Id', 'book.id')|raw }}</th>
+              <th>{{ books.sortable('Name', 'book.name')|raw }}</th>
+              <th>{{ books.sortable('SKU', 'book.sku')|raw }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for book in books %}
+              <tr>
+                <td>{{ book.id }}</td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.sku }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {# display navigation #}
+        <div class="pagination">
+            {{ books.render()|raw }}
+        </div>
+      {% else %}
+        {{ error }}
+      {% endif %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+	<ul class="nav nav-list">
+	  <li class="nav-header">List header</li>
+	  <li class="active"><a href="#">Home</a></li>
+	  <li><a href="{{ path('magento_profile') }}">Edit profile</a></li>
+    <li><a href="{{ path('magento_list_books') }}">My published books</a></li>
+	  <li><a href="{{ path('magento_logout') }}">Logout</a></li>
+	</ul>
+{% endblock %}
